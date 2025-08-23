@@ -432,6 +432,13 @@
   hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("show");
   });
+    
+// Close nav when clicking outside
+document.addEventListener("click", (e) => {
+  if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+    navLinks.classList.remove("show");
+  }
+});      
 
   // Simple auto carousel for testimonials & portfolio
   function carousel(trackId, interval = 4000) {
