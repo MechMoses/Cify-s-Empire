@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cify's Fashion Design and Tailoring Empire Gombe</title>
+  <style type="text/css">
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: helvetica, sans-serif;
+  }
+
+  body {
+    font-size: 16pt;
+    background: #fff;
+    color: #222;
+    line-height: 1.6;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 2rem 0;
+  }
+
+  /* Header + Nav */
+  header {
+    position: relative;
+    height: 100vh; /* ✅ responsive instead of fixed cm */
+    width: 100%;
+    text-align: center;
+    padding: 3rem 1rem;
+    background-image: url("Cify.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+  }
+
+  header h1 {
+    font-size: 70pt;
+    margin-top: 15vh; /* ✅ more flexible */
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  }
+
+  nav {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    z-index: 1000;
+  }
+
+  header img {
+    height: 100px;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  nav ul li {
+    list-style: none;
+  }
+
+  #nav-links {
+    border: none;
+    width: auto;
+    padding: 2em; /* ✅ fixed */
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Hamburger Menu */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .hamburger div {
+    width: 40px;
+    height: 5px;
+    background: white;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 768px) {
+    nav ul {
+      display: none;
+      flex-direction: column;
+      background: rgba(199, 21, 133, 0.95);
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      text-align: left;
+      transition: all 0.3s ease-in-out; /* ✅ smooth dropdown */
+    }
+
+    nav ul.show {
+      display: flex;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+
+  /* Common Styles */
+  h1, h2 {
+    margin-bottom: 1rem;
+    color: #c71585;
+    text-align: center;
+    font-family: cursive;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  section {
+    padding: 3rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem;
+    background-color: #c71585;
+    border-radius: 30px;
+    transition: background 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: #a20f6d;
+  }
+
+  /* Services */
+  #services {
+    background-image: url("redfit.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #services ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    padding-top: 1rem;
+  }
+
+  #services li {
+    background: #f9f9f9;
+    opacity:0.85;
+    padding: 1rem;
+    border-left: 5px solid #c71585;
+    border-radius: 8px;
+  }
+
+  #services li strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #c71585;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  /* Testimonials & Portfolio Carousel */
+  .carousel {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .testimonial {
+    border-left: 5px solid #c71585;
+    min-width: 100%;
+    flex-shrink: 0; /* ✅ fix */
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 10px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Portfolio */
+  #portfolio {
+    height: 100%;
+    padding: 20px;
+  }
+
+  .portfolio-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .portfolio-item {
+    min-width: 100%;
+    flex-shrink: 0; /* ✅ fix */
+    text-align: center;
+  }
+
+  .portfolio-item img {
+    border-left: 8px solid #c71585;
+    width: 85%;
+    max-width: 500px;
+    border-radius: 10px;
+  }
+
+  .portfolio-item p {
+    font-weight: bold;
+  }
+
+  /* FAQ */
+  details summary {
+    font-weight: bold;
+    cursor: pointer;
+    margin: 1rem 0;
+    color: #c71585;
+  }
+
+  details p {
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+  }
+
+  /* Social */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .social-links li a {
+    background: #c71585;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #222;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo"><img src="Logo.png" alt="Cify Logo" class="logo"></div>
+      <ul id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#social">Social</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <div></div><div></div><div></div>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>Cify's Empire</h1>
+      <p class="tagline">A touch of Perfection.</p>
+      <p class="description">Step into elegance with Cify’s Empire – where tradition meets class, and every stitch tells a story. Your perfect outfit is just a fitting away.</p>
+      <div class="cta">
+        <a href="https://wa.me/2347063050300" class="btn whatsapp">Chat on WhatsApp</a>
+        <a href="tel:+2347063050300" class="btn call">Call Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>Located in the heart of Tumfure Market, Gombe, Cify’s Empire is your go-to fashion destination for stunning native styles, bridal elegance, and ready-to-wear pieces. We blend culture and creativity into every design, leaving a lasting impression.</p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <ul>
+        <li><strong>Women’s Traditional Wear</strong> Timeless and elegant designs tailored to showcase African heritage with a modern twist.</li>
+        <li><strong>Bridal Styling & Accessories</strong> From gowns to finishing touches, we make your big day unforgettable.</li>
+        <li><strong>Custom Tailoring</strong> Personalized fittings to bring your dream outfit to life with precision and perfection.</li>
+        <li><strong>Ready-to-Wear Outfits</strong> Chic and classy pieces available instantly for every occasion.</li>
+        <li><strong>Men’s Native Designs</strong> Stylish agbadas, kaftans, and traditional wears crafted for confidence.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <h2>Testimonials</h2>
+      <div class="carousel">
+        <div class="carousel-track" id="testimonialTrack">
+          <div class="testimonial">"Cify’s Empire made my wedding so elegant!"</div>
+          <div class="testimonial">"Always stylish, always perfect!"</div>
+          <div class="testimonial">"Their attention to detail is unmatched."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <div class="container">
+      <h2>Our Portfolio</h2>
+      <div class="carousel">
+        <div class="portfolio-track" id="portfolioTrack">
+          <div class="portfolio-item">
+            <img src="Redfit.jpg" alt="Red Gown" />
+            <p>Red Gown</p>
+          </div>
+          <div class="portfolio-item">
+            <img src="Native.jpg" alt="Classy Native" />
+            <p>Classy Native</p>
+          </div>
+          <div class="portfolio-item">
+            <img src="Whiteone.jpg" alt="Elegant Casual" />
+            <p>Elegant Casual</p>
+          </div>
+          <div class="portfolio-item">
+            <img src="Whitegown.jpg" alt="Bridal Gown" />
+            <p>Bridal Gown</p>
+          </div>
+          <div class="portfolio-item">
+            <img src="Law.jpg" alt="Black and White Style" />
+            <p>Black and White Style</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2>FAQs</h2>
+      <details>
+        <summary>How long does it take to complete an outfit?</summary>
+        <p>Typically 3–7 working days depending on the design.</p>
+      </details>
+      <details>
+        <summary>Do you deliver outside Gombe?</summary>
+        <p>Yes, we deliver across Nigeria.</p>
+      </details>
+      <details>
+        <summary>Can I bring my own fabric?</summary>
+        <p>Absolutely! We also help you choose the best fabrics if needed.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section id="location">
+    <div class="container">
+      <h2>Find Us</h2>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.750579788108!2d11.1611!3d10.2899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1054d6e36d2d2b1d%3A0x6d6f6b83f91f!2sTumfure%20Market%2C%20Gombe!5e0!3m2!1sen!2sng!4v1708953600000" 
+        width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Social Media -->
+  <section id="social">
+    <div class="container">
+      <h2>Follow Us</h2>
+      <ul class="social-links">
+        <li><a href="https://www.facebook.com/profile.php?id=100083348491882" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/cify01" target="_blank">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@cifys_empire" target="_blank">TikTok</a></li>
+        <li><a href="https://www.threads.net/@cify01" target="_blank">Threads</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Cify's Empire. All Rights Reserved.</p>
+      <p>Designed and Powered by: <br> CUTTING EDGE DIGITALS <br><a href="tel:+2348164469466"> +234 8164469466 </a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+  // Hamburger toggle
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("nav-links");
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  // Simple auto carousel for testimonials & portfolio
+  function carousel(trackId, interval = 4000) {
+    const track = document.getElementById(trackId);
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % track.children.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }, interval);
+  }
+
+  carousel("testimonialTrack", 5000);
+  carousel("portfolioTrack", 4000);
+  </script>
+</body>
+</html>
